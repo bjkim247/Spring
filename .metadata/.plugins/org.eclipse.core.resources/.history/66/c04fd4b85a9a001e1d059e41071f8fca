@@ -1,0 +1,5 @@
+package com.mire.biz.board.impl;
+
+public class BoardDAO {
+
+}

@@ -1,0 +1,5 @@
+package com.mire.biz.user;
+
+public class UserVO {
+
+}

@@ -1,0 +1,16 @@
+package com.mire.biz.tv;
+
+public class SamsungTV {
+	public void powerOn() {
+		System.out.println("SamsungTV on");
+	}
+	public void powerOff() {
+		System.out.println("SamsungTV on");
+	}
+	public void volumeUp() {
+		System.out.println("SamsungTV on");
+	}
+	public void volumeDown() {
+		System.out.println("SamsungTV on");
+	}
+}

@@ -1,0 +1,19 @@
+package com.mire.ioc.injection;
+
+import java.util.List;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class CollectionBeanClient {
+	public static void main(String[] args) {
+		AbstractApplicationContext beanFactory = new GenericXmlApplicationContext("applicationContext.xml");
+		
+		List<String> list = bean.getAddressList();
+		for(String data :  list) {
+			System.out.println(data.toString());
+		}
+		
+	}
+	
+}

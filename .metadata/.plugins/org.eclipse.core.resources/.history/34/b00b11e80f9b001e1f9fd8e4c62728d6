@@ -1,0 +1,11 @@
+package com.mire.biz.common;
+
+import org.springframework.stereotype.Service;
+
+public class AroundAdvice {
+
+	public void afterReturnLog() {
+		System.out.println("[afterReturnLog] 비즈니스 로직 수행후 리턴처리후 동작");
+
+	}
+}

@@ -1,0 +1,14 @@
+package com.mire.biz.common;
+
+import org.aspectj.lang.JoinPoint;
+
+public class AfterThrowingAdvice {
+
+	public void afterThrowingLog(JoinPoint jp,Exception exception) {
+		String methodName = jp.getSignature().getName();
+		String message = exception.getMessage();
+		System.out.println("[afterThrowingLog] 비즈니스 로직 수행 후 예외처리 동작 함수명:"
+				+ methodName +"예외처리내용"+ message);
+
+	}
+}

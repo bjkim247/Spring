@@ -1,0 +1,20 @@
+package com.mire.biz.common;
+
+import org.aspectj.lang.JoinPoint;
+import org.springframework.stereotype.Service;
+
+public class AfterReturningAdvice {
+
+	public void afterReturnLog(JoinPoint jp,Object returnObj) {
+		String methodName = jp.getSignature().getName();
+		Object[] args = jp.getArgs();
+		Object obj = jp.getTarget();
+		
+		//리턴값 가지고 확인할 수 있다.
+		
+		System.out.println("[공통로그] 비즈니스 로직 수행전 동작 메소드"+ methodName + 
+				"매개변수= " +args[0].toString() +" 클래스 ="+obj.toString() );
+		System.out.println("[afterReturnLog] 비즈니스 로직 수행후 리턴처리후 동작");
+
+	}
+}

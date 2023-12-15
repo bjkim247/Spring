@@ -1,0 +1,16 @@
+package com.mire.ioc.injection;
+
+import java.util.Set;
+
+public class setCollectionBean {
+	private Set<String> setaddressList;
+
+	public void setAddressList(Set<String> setaddressList) {
+		this.setaddressList = setaddressList;
+	}
+
+	public Set<String> getAddressList() {
+		return setaddressList;
+	}
+
+}

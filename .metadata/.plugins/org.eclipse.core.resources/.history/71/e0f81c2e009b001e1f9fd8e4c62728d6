@@ -1,0 +1,60 @@
+package com.mire.biz.board.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mire.biz.board.BoardService;
+import com.mire.biz.board.BoardVO;
+import com.mire.biz.common.LogAdvice;
+import com.mire.biz.common.LogAdvice2;
+
+
+@Service("boardService")
+public class BoardServiceImpl implements BoardService {
+	@Autowired
+	private BoardDAO boardDAO;
+//	private LogAdvice log;
+	private LogAdvice2 log;
+	
+	public BoardServiceImpl() {
+		this.log = new LogAdvice2();
+	}
+
+	@Override
+	public void insertBoard(BoardVO vo) {
+//		System.out.println("[공통로그] 비즈니스 로직 수행전 동작");
+		log.printLoging();
+		boardDAO.insertBoard(vo);
+		//예외처리
+		
+	}
+
+	@Override
+	public void updateBoard(BoardVO vo) {
+		log.printLoging();
+		boardDAO.updateBoard(vo);
+
+	}
+
+	@Override
+	public void deleteBoard(BoardVO vo) {
+		log.printLoging();
+		boardDAO.deleteBoard(vo);
+	
+	}
+
+	@Override
+	public BoardVO getBoard(BoardVO vo) {
+		log.printLoging();
+		return boardDAO.getBoard(vo);
+	}
+
+	@Override
+	public List<BoardVO> getBoardList(BoardVO vo) {
+		log.printLoging();
+		return boardDAO.getBoardList(vo);
+	}
+
+}

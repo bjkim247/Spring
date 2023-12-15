@@ -1,0 +1,24 @@
+package com.mire.biz.tv;
+
+public class BeanFactory {
+	public Object getBean(String beanName) {
+		Object obj = null;
+		switch(beanName) {
+		case "samsung": 
+			obj = new SamsungTV();
+			break;
+		case "lg" :
+			obj = new LgTV();
+			break;
+		default: 
+			obj = null;
+			break;
+		}
+		
+		
+		
+		
+		
+		return obj;
+	}
+}

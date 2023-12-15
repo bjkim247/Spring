@@ -1,0 +1,30 @@
+package com.mire.biz.tv;
+
+public class LgTV implements TV{
+	
+	
+	
+	public LgTV() {
+		System.out.println("LgTV 생성자작동해서 만들어짐");
+	}
+	@Override
+	public void powerOn() {
+		System.out.println("LGTV on");
+		
+	}
+	@Override
+	public void powerOff() {
+		System.out.println("LGTV off");
+		
+	}
+	@Override
+	public void volumeUp() {
+		System.out.println("LGTV speaker up");
+		
+	}
+	@Override
+	public void volumeDown() {
+		System.out.println("LGTV speaker down");
+		
+	}
+}

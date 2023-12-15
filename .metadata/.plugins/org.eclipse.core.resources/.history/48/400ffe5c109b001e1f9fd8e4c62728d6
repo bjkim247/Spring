@@ -1,0 +1,14 @@
+package com.mire.biz.common;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.stereotype.Service;
+
+public class AroundAdvice {
+
+	public void aroundLog(ProceedingJoinPoint pjp) throws Throwable{
+		System.out.println("[aroundLog start] 비즈니스 메소드 수행전 처리할 내용");
+		Object obj = pjp.proceed();
+		System.out.println("[aroundLog stop] 비즈니스 메소드 수행후 처리할 내용");
+		return obj;
+	}
+}

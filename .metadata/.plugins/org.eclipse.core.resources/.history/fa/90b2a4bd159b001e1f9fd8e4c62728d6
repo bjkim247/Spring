@@ -1,0 +1,16 @@
+package com.mire.biz.common;
+
+import org.aspectj.lang.JoinPoint;
+
+public class LogAdvice {
+
+	public void printLog(JoinPoint jp) {
+		String methodName = jp.getSignature().getName();
+		Object[] args = jp.getArgs();
+		Object obj = jp.getTarget();
+		
+		System.out.println("[공통로그] 비즈니스 로직 수행전 동작 메소드"+ methodName + 
+				"매개변수= " +args[0].toString() +" 클래스 =" );
+
+	}
+}

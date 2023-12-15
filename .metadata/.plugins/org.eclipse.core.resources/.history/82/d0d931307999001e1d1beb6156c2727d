@@ -1,0 +1,16 @@
+package com.mire.biz.tv;
+
+public class LgTV {
+	public void powOn() {
+		System.out.println("LGTV on");
+	}
+	public void powOff() {
+		System.out.println("LGTV off");
+	}
+	public void speakerUp() {
+		System.out.println("LGTV speaker up");
+	}
+	public void speakerDown() {
+		System.out.println("LGTV speaker down");
+	}
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <bean id="collectionBean" class="com.mire.ioc.injection.CollectionBean"> 
+		<property name="addressList"> <list> <value>서울시 강남구 역삼동</value> <value>서울시 
+		성동구 행당동</value> </list> </property> </bean> -->
+	<bean id="collectionBean"
+		class="com.mire.ioc.injection.setCollectionBean">
+		<property name="addressList">
+			<set value-type="java.lang.String">
+				<value>서울시 강남구 역삼동</value>
+				<value>서울시 성동구 성수동</value>
+				<value>경기도 용인시</value>
+				</set>
+		</property>
+	</bean>
+
+
+
+
+
+
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- setter IoC <bean id="stv" class="com.mire.biz.tv.SamsungTV"> <property 
+	name="speaker" ref="sonySpeaker"></property> <property name="price" value="100000"></property> 
+	</bean> 3. 객체생성 <bean id="tv" class="com.mire.biz.tv.LgTV"></bean> <bean 
+	id="stv" class="com.mire.biz.tv.SamsungTV" p:speaker-ref="sonySpeaker" p:price="110000"/> 
+	<bean id="sonySpeaker" class="com.mire.biz.tv.SonySpeaker"></bean> <bean 
+	id="LgSpeaker" class="com.mire.biz.tv.LgSpeaker"></bean> -->
+  
+  
