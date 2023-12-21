@@ -1,0 +1,34 @@
+package com.mire.view.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.mire.view.board.DeleteBoardController;
+import com.mire.view.board.GetBoardController;
+import com.mire.view.board.GetBoardListController;
+import com.mire.view.board.InsertBoardController;
+import com.mire.view.board.LogoutController;
+import com.mire.view.board.UpdateBoardController;
+import com.mire.view.user.LoginController;
+
+public class HandlerMapping {
+	private Map<String, Controller> mappings;
+
+	public HandlerMapping() {
+		super();
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());
+		mappings.put("/getBoard.do", new GetBoardController());
+		mappings.put("/insertBoard.do", new InsertBoardController());
+		mappings.put("/updateBoard.do", new UpdateBoardController());
+		mappings.put("/deleteBoard.do", new DeleteBoardController());
+		mappings.put("/logout.do", new LogoutController());
+	}
+	
+	
+	public Controller getController(String path) {
+		return mappings.get(path);
+	}
+	
+}

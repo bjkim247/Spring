@@ -1,0 +1,5 @@
+package com.mire.view.common;
+
+public class CommonExceptionHandler {
+
+}

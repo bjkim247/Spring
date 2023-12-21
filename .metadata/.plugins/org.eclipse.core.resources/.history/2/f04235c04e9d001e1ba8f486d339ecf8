@@ -1,0 +1,46 @@
+package com.mire.view.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class DispatcherServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public DispatcherServlet() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		process(request,response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		process(request,response);
+	}
+	private void process(HttpServletRequest request, HttpServletResponse response) {
+		//1. 클라이언트 요청을 정보를 추출한다.
+		String uri = request.getRequestURI();
+		String path = uri.substring(uri.lastIndexOf("/"));
+//		System.out.println(path);
+		
+		
+		//2. 추출한 정보를 가지고 해당된 처리 컨트롤로 분기를 해야된다.login_proc.***
+		switch(path) {
+		case "/login.do": System.out.println("login.do"); break;
+		case "/logout.do": System.out.println("logout.do"); break;
+		case "/insertBoard.do": System.out.println("insertBoard.do"); break;
+		case "/updateBoard.do": System.out.println("updateBoard.do"); break;
+		case "/deleteBoard.do": System.out.println("deleteBoard.do"); break;
+		case "/getBoard.do": System.out.println("getBoard.do"); break;
+		case "/getBoardList.do": System.out.println("getBoardList.do"); break;
+		}
+		
+		
+		//3. 화면전환을 한다.
+	}
+
+}

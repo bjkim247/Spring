@@ -14,23 +14,23 @@ import com.mire.biz.common.JDBCUtil;
 
 @Repository("boardDAO")
 public class BoardDAO {
-	// ±×DBC °ü·Ã º¯¼ö
+	// ï¿½ï¿½DBC ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL ¸í·É¾îµé
+	// SQL ï¿½ï¿½É¾ï¿½ï¿½
 	private final String BOARD_INSERT = "insert into myboard(seq, title, writer, content) values ((select nvl(max(seq), 0)+1 from myboard), ?, ?, ?)";
 	private final String BOARD_UPDATE = "update myboard set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete from myboard where seq=?";
 	private final String BOARD_GET = "select * from myboard where seq=?";
-	private final String BOARD_LIST = "select * from myboard order by seq desc";
+//	private final String BOARD_LIST = "select * from myboard order by seq desc";
+	private final String BOARD_LIST_TITLE = "select * from myboard where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_CONTENT = "select * from myboard where content like '%'||?||'%' order by seq desc";
 
-	// CRUD ±â´ÉÀÇ ¸Þ¼Òµå ±¸Çö
-
-	// ±Û µî·Ï
+	// CRUD insert board
 	public void insertBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î insertBoard() ±â´É Ã³¸®");
+		System.out.println("===> JDBC insertBoard()");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_INSERT);
@@ -45,9 +45,9 @@ public class BoardDAO {
 		}
 	}
 
-	// ±Û ¼öÁ¤
+	//update Board
 	public void updateBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î updateBoard() ±â´É Ã³¸®");
+		System.out.println("===> JDBC updateBoard()");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_UPDATE);
@@ -62,9 +62,9 @@ public class BoardDAO {
 		}
 	}
 
-	// ±Û »èÁ¦
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void deleteBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î deleteBoard() ±â´É Ã³¸®");
+		System.out.println("===> JDBCï¿½ï¿½ deleteBoard() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_DELETE);
@@ -77,9 +77,9 @@ public class BoardDAO {
 		}
 	}
 
-	// ±Û »ó¼¼ Á¶È¸
+	// ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("===> JDBC·Î getBoard() ±â´É Ã³¸®");
+		System.out.println("===> JDBC getBoard()");
 		BoardVO board = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -103,13 +103,18 @@ public class BoardDAO {
 		return board;
 	}
 
-	// ±Û ¸ñ·Ï Á¶È¸
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> JDBC·Î getBoardList() ±â´É Ã³¸®");
+		System.out.println("===> JDBCï¿½ï¿½ getBoardList() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		List<BoardVO> boardList = new ArrayList<>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_LIST);
+			if(vo.getSearchCondition().equals("TITLE")) {
+				stmt = conn.prepareStatement(BOARD_LIST_TITLE);
+			}else{
+					stmt = conn.prepareStatement(BOARD_LIST_CONTENT);
+			}
+			stmt.setString(1, vo.getSearchKeyword());
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				BoardVO board = new BoardVO();

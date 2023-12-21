@@ -1,0 +1,22 @@
+package com.mire.view.board;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mire.biz.board.BoardVO;
+import com.mire.biz.board.impl.BoardDAO;
+
+@Controller
+public class GetBoardController{
+
+	@RequestMapping(value = "/getBoard.do")
+	public String getBoard(BoardVO vo, BoardDAO boardDAO, Model model) {
+		System.out.println("getBoard"); 
+		BoardVO board = boardDAO.getBoard(vo);
+		model.addAttribute("board", board);
+		return "getBoard";
+		
+	}
+
+}
